@@ -1,0 +1,16 @@
+pd.to_datetime, pd.DatetimeIndex.
+
+pandas
+convert sec from midnight to UTC timestamp compatible with KDB:
+	1. localts = pd.to_datetime(sfm + pd.to_datetime(datestr).asm8.astype('int64')/1e9, unit='s')
+	2. utcts = pd.to_datetime( pd.DatetimeIndex(localts, tz='US/Eastern').tz_convert('UTC').asi8) convert to timezone unaware time stamps
+
+pd.merge(l, r, on='common_col')
+pd.merge(l, r, left_on='left_col', right_on='right_col', how='left') this will join two tables without them having same name col, and thus will retain two cols (which would be identical), how='left' will retain left table rows where no match is found from right table.
+
+re.match:
+r'%s\.?\s*([\*0-9]*)\s*=\s*(.*)'%field
+	r'...' make sure \. is interpreted literally, \s* will match (as much as possible) zero or one or more space, \s*(.*) captures the chars after the space (if any)
+
+connecting folder name to form a path:
+	'/'.join(lists of foldernames) 			note this will avoid using f1 + '/' + f2, making code more compact
