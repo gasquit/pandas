@@ -14,3 +14,16 @@ r'%s\.?\s*([\*0-9]*)\s*=\s*(.*)'%field
 
 connecting folder name to form a path:
 	'/'.join(lists of foldernames) 			note this will avoid using f1 + '/' + f2, making code more compact
+
+
+
+
+
+oct 14
+if you want to auto convert str to a date, it's good to use pandas.to_datetime(), which has certain smartness in parsing the string: it supposes '2015-05-02', '2015.05.02', '2015/05/02', '20150502', '2015-May-02', for the cases I tested. And this interface doesn't take extra argument to specify which format to use.
+
+From there, convert to the ISO format of 'yyyy-mm-dd' or q recognizable 'yyyy.mm.dd', by 
+	pd.to_datetime(somestr).date().isoformat()
+	or,
+	pd.to_datetime(somestr).date().strftime('%Y.%m.%d')
+note that all of this is based on pandas.tslib.Timestamp, which is a single object not an array. pd.to_datetime() can also work on arrays of strings, but the result will be pandas.tseries.index.DatetimeIndex. 
