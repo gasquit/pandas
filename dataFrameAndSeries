@@ -1,0 +1,8 @@
+for c in df:
+	print c # this c is actually col name
+
+pd.concat((), axis=1) works for gluing many series together, but all components must be Series not DataFrame
+
+df.apply(lambda x:....) works for apply some func for all columns
+df + - * /= can be broadcast to Series, but it will incur __future__ warning that it's deprecated.
+
