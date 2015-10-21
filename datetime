@@ -34,3 +34,5 @@ On the other hand, python datetime.date .time .datetime take integer to construc
 Oct 21
 pandas time valued series has dtype as '<M8[ns]', and its values, ie. x.values is ndarray with dtype='datetime64[ns]'.
 series itself can't be added or subtracted with integer but its values can. Same situation when x.index is assigned to be a time-valued array, where its type will be automatically converted to pandas.DatetimeIndex, which can't be added with integer. 
+
+to add to or subtrace from a time-valued array (index or Series), use pd.Timedelta(n, unit='s/ms/ns')
