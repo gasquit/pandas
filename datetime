@@ -29,3 +29,8 @@ From there, convert to the ISO format of 'yyyy-mm-dd' or q recognizable 'yyyy.mm
 note that all of this is based on pandas.tslib.Timestamp, which is a single object not an array. pd.to_datetime() can also work on arrays of strings, but the result will be pandas.tseries.index.DatetimeIndex. 
 
 On the other hand, python datetime.date .time .datetime take integer to construct
+
+
+Oct 21
+pandas time valued series has dtype as '<M8[ns]', and its values, ie. x.values is ndarray with dtype='datetime64[ns]'.
+series itself can't be added or subtracted with integer but its values can. Same situation when x.index is assigned to be a time-valued array, where its type will be automatically converted to pandas.DatetimeIndex, which can't be added with integer. 
