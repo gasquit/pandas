@@ -36,3 +36,10 @@ pandas time valued series has dtype as '<M8[ns]', and its values, ie. x.values i
 series itself can't be added or subtracted with integer but its values can. Same situation when x.index is assigned to be a time-valued array, where its type will be automatically converted to pandas.DatetimeIndex, which can't be added with integer. 
 
 to add to or subtrace from a time-valued array (index or Series), use pd.Timedelta(n, unit='s/ms/ns')
+
+Oct 28
+alternatively, to offset a timestamp, you can:
+	numpy.timedelta64(integer, unit)
+	pandas.tseries.offsets.DateOffset subclass ...
+
+	
